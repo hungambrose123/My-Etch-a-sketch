@@ -7,61 +7,22 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <button class="btn">Change grid size</button>
+    <h1 style="text-align: center;">Etch a Sketch</h1>
+
+    <div class="btn-container">
+        <button class="btn">Change grid size</button>
+        <button class="btn-paint">Paint</button>
+        <button class="btn-paint-rgb">Rainbow Paint</button>
+        <button class="btn-eraser">Eraser</button>
+        <button class="btn-clear">Clear</button>
+    </div>
+    
 
     <div class="container" style="display: flex; flex-direction: column; justify-content: center;">
 
     </div>
 
-    <script>
-        const container = document.querySelector(".container");
-
-        const button = document.querySelector(".btn");
-        button.addEventListener("click", () => {
-            const column = prompt("Column ?");
-            const row = prompt("Row ?");
-            container.innerHTML = "";
-            generatePad(column, row)
-        })
-
-        const generatePad = (column = 16, row = 16) => {
-            //create row
-            for(let i = 0; i< row; i++){
-                const row = document.createElement("div");
-                row.setAttribute("style", "display: flex; flex-direction: row;");
-
-                for(let j = 0; j< column; j++){
-                    const columnWithinRow = document.createElement("div");
-                    columnWithinRow.className = "item";
-                    columnWithinRow.setAttribute("style", "background: white; min-width: 30px; min-height: 30px;");
-                    columnWithinRow.style.border = "1px solid black"
-                    row.appendChild(columnWithinRow)
-                }
-                container.appendChild(row);
-            }
-            
-            const items = document.querySelectorAll(".item");
-            items.forEach(item => {
-                let isClicked = false;
-                item.addEventListener("mouseover", (e) => {
-                    item.setAttribute("style", "background: black; width: 30px; height: 30px; border: 1px solid black");
-                })
-                item.addEventListener("click", (e) => {
-                    item.setAttribute("style", "background: red; width: 30px; height: 30px; border: 1px solid black");
-                    isClicked = true;
-                })
-                if (!isClicked) {
-                    item.addEventListener("mouseout", (e) => {
-                        item.setAttribute("style", "background: white; width: 30px; height: 30px; border: 1px solid black");
-                    })
-                }             
-                
-
-            })
-
-        }
-
-        generatePad()
+    <script src="./script.js">
     </script>
 </body>
 </html>
